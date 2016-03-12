@@ -24,6 +24,7 @@ int main()
     posx = 0;
     posy = 0;
     posz = 0;
+    loopreset = 0; //I found out that it's ABSOULTELY necessary to preinitialize your for() values, because otherwise the compiler just glosses over them
     cout << "Init done." << endl;
     
     for (int loopreset; loopreset < 99; ++loopreset) //Decided to make an overarching failsafe this time.
@@ -31,6 +32,29 @@ int main()
         for (int select; select < 1; ++select)
         {
             cout << "Select your option:" << endl;
+            cout << "1. Set speed" << endl;
+            cout << "2. Change horizontal orientation" << endl;
+            cout << "3. Change vertical angle" << endl;
+            cout << "4. Pass time" << endl;
+            cout << "5. Exit" << endl;
+            cin >> stat;
+            
+            if (stat == 5)
+            {
+                exit (0);
+            }
+            else if (stat == 1)
+            {
+                cout << "Input desired speed" << endl;
+                cin >> speed;
+                cout << "Value accepted. Current speed is " << speed << endl;
+                --select;
+            }
+            else if (stat == 2)
+            {
+                cout << "Select desired angle";
+                cin >> anglexy;
+            }
         }
     }
     
