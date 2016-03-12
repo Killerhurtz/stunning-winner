@@ -1,0 +1,71 @@
+//First code snippet, which really is an experiment on how to return a true value of speed from a delta distance. 
+//Reminder to self: this is the place where you can pull code for everything that needs an absolute "speed" value.
+
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+    int stat; // All of this stuff initiates the variables I used to do the math.
+    int loopstat;
+    int loopreset;
+    int select;
+    float calcspeed; //Floats are important. Integers can't hold decimals.
+    float value;
+    float speed;
+    float accel;
+	float dist;
+	float pastdist;
+	float deltadist;
+    select = 0;
+    cout << "Init done" << endl; //Because I had trouble seeing why things wouldn't run in the first place
+    
+    for (int select; select < 1; ++select) //Container loop that can be interrupted with 3.
+    {
+        cout << "Please select an option:" << endl; //Text!
+        cout << "1. Change acceleration" << endl;
+        cout << "2. Pass time" << endl;
+        cout << "3. Exit" << endl;
+        ++loopstat; //Failsafe I put in. If it went through too many iterations of this loop, hopefully the "if" below would have killed it... right?
+        cin >> stat; //Input to tell it what to do. 
+    if (stat == 1) //Matches the option. Convenient, no?
+    {
+        cout << "Enter change" << endl;
+        cin >> value; //Input that gives you the chance to set the accel to something different.
+        cout << "Value accepted" << endl; //To make sure it actually got there.
+        accel += value; //Value is basically the placeholder for the change.
+        cout << "Accel was changed by " << value << " and is now " << accel << endl; //Because verbose is always awesome
+        value = 0; //Resets the value. Juuust in case.
+        loopstat = 0; //Resets the loop failsafe, because if it got there, it means it worked to SOME degree.
+        ++loopreset; //And that's the ultimate failsafe just in case it got stuck here. I don't think I implemented the other half though. <:D
+        --select; //And that makes sure that the main menu select comes back. 
+    }
+    else if (stat == 2)
+    {
+        pastdist = dist; //Backs up the current "dist" value so that we can establist a "delta-dist" - which is essentially speed. Or at least part of it.
+        dist += speed + 0.5*accel; //Applies the motion formula to calculate accurately the NEW distance traveled. 
+        cout << "New distance set" << endl; //Have I mentioned I liked verbose?
+        speed += accel; //Because that's basically what it does - over a second, anyway. Reminder to self: unless you want game to recalculate every tick, adapt this to accept a time value, and actually MAKE a timer
+        deltadist = dist - pastdist; //Establishing the delta-dist. Because delta is variation - so by substracting what isn't from what it is, we can tell why it isn't so that things can tell where they are and where they aren't.
+        cout << "New speed and delta distance set" << endl; // LOL VERBOSE
+        cout << "One second has passed. Acceleration is " << accel << " while speed is now " << speed << " . Total distance is " << dist << "and we have travelled " << deltadist << " in the last second." << endl;
+        loopstat = 0; //Again, reset main failsafe.
+        ++loopreset; //Again, the half-implemented SECOND failsafe. I used an online compiler - do you have any idea how many times I accidentally made a runaway thing that forced me to close Firefox? The answer is about 22. Probably more.
+        --select; //Resets the select again.
+        calcspeed = abs (deltadist + 0.5*accel); //And as a forethought, I realized I should probably /actually/ calculate the speed from the delta-dist. Because that's why I wrote this in the first place, yaknow?
+        cout << "The current calculated speed is " << calcspeed << endl; // VERBOOSE.
+    }
+    else if (stat == 3)
+    {
+        ++select; //Easy quit condition. Just make sure "select" isn't 0. Waala!
+    }
+    else if (loopstat >9) //The code snippet that is supposed to save me from the runaway loops. 
+    {
+        exit (0); 
+    }
+    }
+}
+
+//Hope this has been educative for you! Next up: Trigonometry, and calculating an absolute delta-distance regardless of the "direction" it's going. In 3D right away because I'm a jackass like that.
