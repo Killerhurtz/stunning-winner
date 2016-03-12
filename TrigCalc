@@ -1,0 +1,37 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+    float speed;
+    float posx;
+    float posy;
+    float posz;
+    float pastposx;
+    float pastposy;
+    float pastposz;
+    float relposx;
+    float relposy;
+    float relposz;
+    float anglexy;
+    float anglez;
+    int select;
+    int stat;
+    int loopreset;
+    select = 0;
+    posx = 0;
+    posy = 0;
+    posz = 0;
+    cout << "Init done." << endl;
+    
+    for (int loopreset; loopreset < 99; ++loopreset) //Decided to make an overarching failsafe this time.
+    {
+        for (int select; select < 1; ++select)
+        {
+            cout << "Select your option:" << endl;
+        }
+    }
+    
+}
