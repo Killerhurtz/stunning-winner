@@ -96,13 +96,13 @@ int main()
 					--select;
 					break;
 				case 6:
-				    double possum = pcur.x + pcur.y + pcur.z;
-				    int numsum = trunc(possum);
-				    int weapval = (numsum % 13) + 1;
-				    switch (weapval)
+				    double possum = pcur.x + pcur.y + pcur.z; //Makes a sum of all positions for randomization purposes
+				    int numsum = trunc(possum); //Truncate the possum so that you have an integer.
+				    int weapval = (numsum % 14) + 1; //Have the number modulo 13 to have a value 0-13, then plus one to have 1-14. Vary the modulo to always have x+1 options.
+				    switch (weapval)//SWITCHES ARE AWESOME
 				    {
 				        case 1:
-				            std::cout << "You got Weapon 1" << std::endl;
+				            std::cout << "You got Weapon 1" << std::endl;//Tells me what I got.
 				            break;
 				        case 2:
 				            std::cout << "You got Weapon 2" << std::endl;
