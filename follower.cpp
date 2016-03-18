@@ -98,6 +98,9 @@ int main()
     int num, stat = 0;
     double inx, iny;
     AIobj P1;
+    P1.pcur.x = 0;
+    P1.pcur.y = 0;
+    P1.pcur.z = 0;
     P1.speed = 0;
     
     for (int select = 1; select == 1; --select)
