@@ -40,6 +40,7 @@ int setTarget(double a, double b)
 {
     a = trg::x;
     b = trg::y;
+    return (a, b);
 }
 
 void AIobj::calc_move ()
@@ -89,7 +90,7 @@ int selectTarget()
     std::cin >> trg::x;
     std::cout << "Please select the Y coordinate of target" << std::endl;
     std::cin >> trg::y;
-    std::cout << "Target selected.";
+    std::cout << "Target selected. Coordinates are " << trg::x << " " << trg::y << std::endl;
 }
 
 
