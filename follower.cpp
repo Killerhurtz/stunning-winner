@@ -8,7 +8,7 @@ namespace AIcheck
 
 namespace trg
 {
-    double x, y = 0;
+   double x, y = 0;
 }
 
 using namespace AIcheck;
@@ -98,9 +98,6 @@ int main()
     int num, stat = 0;
     double inx, iny;
     AIobj P1;
-    P1.pcur.x = 0;
-    P1.pcur.y = 0;
-    P1.pcur.z = 0;
     P1.speed = 0;
     
     for (int select = 1; select == 1; --select)
@@ -113,13 +110,7 @@ int main()
     switch (stat)
     {
         case 1:
-            std::cout << "Select X coordinate:" << std::endl;
-            std::cin >> inx;
-            std::cout << "Coordinate accepted. Please enter Y coordinate:" << std::endl;
-            std::cin >> iny;
-            setTarget(inx, iny);
-            inx = 0;
-            iny = 0;
+            selectTarget();
             ++select;
             break;
         case 2:
